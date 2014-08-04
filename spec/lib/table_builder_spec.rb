@@ -22,9 +22,20 @@ describe TableBuilder do
     context 'when there is a header' do
       subject { described_class.new(io, header: [1, 2]) }
 
-      it 'appends the header to the output' do
-        subject.table { }
+      it 'prepends the header to the output' do
+        subject.table
+
         expect(io.string).to eq "1\t2\n\n"
+      end
+    end
+
+    context 'when there is a header and a leader' do
+      subject { described_class.new(io, header: [1, 2], leader: %w(a b)) }
+
+      it 'prepends the header with a whitespace cell' do
+        subject.table
+
+        expect(io.string).to eq "\t1\t2\n\n"
       end
     end
   end

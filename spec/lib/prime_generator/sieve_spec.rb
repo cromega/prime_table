@@ -1,3 +1,4 @@
+require_relative '../../shared/prime_generator'
 require_relative '../../../lib/prime_generator/sieve'
 
 module PrimeGenerator
